@@ -5,6 +5,21 @@
 
 concurrency limiter for Echo framework
 
+## Usage
+
+### Integration
+
+```go
+func main() {
+  // ...
+
+  e := echo.New()
+  e.Use(colimit.New(512))
+
+  // ...
+}
+```
+
 ## License
 
 canhead <hi@canhead.xyz> MIT License
