@@ -26,10 +26,7 @@ func New(limit int64) echo.MiddlewareFunc {
 				return c.String(http.StatusServiceUnavailable, "concurrency limit exceeded")
 			}
 			// invoke next handler
-			if err := next(c); err != nil {
-				c.Error(err)
-			}
-			return nil
+			return next(c)
 		}
 	}
 }
