@@ -53,7 +53,7 @@ func TestColimit(t *testing.T) {
 		time.Sleep(time.Second / 2)
 		h(c4)
 		assert.Equal(t, "concurrency limit exceeded", rec4.Body.String())
-		assert.Equal(t, http.StatusServiceUnavailable, rec4.Code)
+		assert.Equal(t, http.StatusInsufficientStorage, rec4.Code)
 	}()
 
 	req5 := httptest.NewRequest(http.MethodGet, "/5", nil)

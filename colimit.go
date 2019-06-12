@@ -23,7 +23,7 @@ func New(limit int64) echo.MiddlewareFunc {
 			// check limit
 			defer atomic.AddInt64(&count, -1)
 			if atomic.AddInt64(&count, 1) > limit {
-				return c.String(http.StatusServiceUnavailable, "concurrency limit exceeded")
+				return c.String(http.StatusInsufficientStorage, "concurrency limit exceeded")
 			}
 			// invoke next handler
 			return next(c)
